@@ -19,6 +19,27 @@ const addEmployee = async (req, res) => {
     res.status(200).send(employee);
 }
 
+
+// add an employee by CSV
+const addEmployeeCsv = async (req, res) => {
+
+    const reqInfo = req.body;
+    reqInfo.map(async employee => {
+        if (employee.first_name && employee.last_name && employee.email) {
+            const employeeInfo = {
+                first_name: employee.first_name,
+                last_name: employee.last_name,
+                email: employee.email
+            }
+            // console.log(employeeInfo);
+            const employeeRecord = await Employee.create(employeeInfo)
+            res.status(200).send(employeeRecord);
+        }
+    })
+
+
+}
+
 // Get employee list
 const getEmployees = async (req, res) => {
     let employees = await Employee.findAll({
@@ -33,5 +54,6 @@ const getEmployees = async (req, res) => {
 
 module.exports = {
     addEmployee,
-    getEmployees
+    getEmployees,
+    addEmployeeCsv
 }
