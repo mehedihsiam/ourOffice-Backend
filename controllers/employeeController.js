@@ -46,7 +46,8 @@ const getEmployees = async (req, res) => {
         attributes: [
             'first_name',
             'last_name',
-            'email'
+            'email',
+            'id'
         ]
     })
     res.send(employees);
