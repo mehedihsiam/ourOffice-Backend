@@ -7,4 +7,6 @@ router.post('/addEmployeeCsv', employeeController.addEmployeeCsv)
 
 router.get('/allEmployees', employeeController.getEmployees)
 
+router.get('/searchedEmployees', employeeController.getSearchedEmployees)
+
 module.exports = router

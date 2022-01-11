@@ -53,8 +53,16 @@ const getEmployees = async (req, res) => {
     res.send(employees);
 }
 
+// get searched employees
+const getSearchedEmployees = async (req, res) => {
+    const email = req.query.email;
+    let searchedEmployees = await Employee.findAll({ where: { email: email } })
+    res.send(searchedEmployees)
+}
+
 module.exports = {
     addEmployee,
     getEmployees,
+    getSearchedEmployees,
     addEmployeeCsv
 }
